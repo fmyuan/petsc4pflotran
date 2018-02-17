@@ -1,6 +1,4 @@
 #requirespackage 'PETSC_HAVE_VIENNACL'
-#requiresdefine 'PETSC_HAVE_VIENNACL_NO_CUDA'
-
 ALL: lib
 
 CFLAGS   =
