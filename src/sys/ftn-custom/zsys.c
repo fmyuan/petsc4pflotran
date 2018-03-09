@@ -55,7 +55,9 @@ PETSC_EXTERN void PETSC_STDCALL chkmemfortran_(int *line,char* file PETSC_MIXED_
   char *c1;
 
   FIXCHARNOMALLOC(file,len,c1);
+  /*
   *ierr = PetscMallocValidate(*line,"Userfunction",c1);
+  */
 }
 
 

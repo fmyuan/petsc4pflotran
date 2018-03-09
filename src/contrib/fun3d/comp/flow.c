@@ -942,7 +942,9 @@ int GetLocalOrdering(GRID *grid)
   if (!flg) {
     ierr = PetscSortIntWithPermutation(nedgeLoc,tmp,eperm);CHKERRQ(ierr);
   }
+  /*
   ierr = PetscMallocValidate(__LINE__,PETSC_FUNCTION_NAME,__FILE__);CHKERRQ(ierr);
+  */
   k = 0;
   for (i = 0; i < nedgeLoc; i++) {
 #if defined(INTERLACING)

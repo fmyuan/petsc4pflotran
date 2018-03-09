@@ -57,6 +57,8 @@ PETSC_INTERN void PetscSegv_sigaction(int, siginfo_t*, void *);
 @*/
 PetscBool PetscCheckPointer(const void *ptr,PetscDataType dtype)
 {
+  return PETSC_TRUE;
+  
   struct sigaction sa,oldsa;
 
   if (PETSC_RUNNING_ON_VALGRIND) return PETSC_TRUE;

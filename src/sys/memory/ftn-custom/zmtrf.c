@@ -5,12 +5,16 @@
 #if defined(PETSC_HAVE_FORTRAN_CAPS)
 #define petscmallocdump_               PETSCMALLOCDUMP
 #define petscmallocdumplog_            PETSCMALLOCDUMPLOG
+/*
 #define petscmallocvalidate_           PETSCMALLOCVALIDATE
+*/
 #define petscmemoryview_               PETSCMEMORYVIEW
 #elif !defined(PETSC_HAVE_FORTRAN_UNDERSCORE)
 #define petscmallocdump_               petscmallocdump
 #define petscmallocdumplog_            petscmallocdumplog
+/*
 #define petscmallocvalidate_           petscmallocvalidate
+*/
 #define petscmemoryview_               petscmemoryview
 #endif
 
@@ -38,10 +42,12 @@ PETSC_EXTERN void PETSC_STDCALL petscmallocdumplog_(PetscErrorCode *ierr)
   *ierr = PetscMallocDumpLog(stdout);
 }
 
+/*
 PETSC_EXTERN void PETSC_STDCALL petscmallocvalidate_(PetscErrorCode *ierr)
 {
   *ierr = PetscMallocValidate(0,"Unknown Fortran",0);
 }
+*/
 
 PETSC_EXTERN void PETSC_STDCALL petscmemoryview_(PetscViewer *vin, char* message PETSC_MIXED_LEN(len), PetscErrorCode *ierr PETSC_END_LEN(len))
 {

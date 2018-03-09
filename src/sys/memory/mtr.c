@@ -117,6 +117,8 @@ PetscErrorCode PetscSetUseTrMalloc_Private(void)
 .seealso: CHKMEMQ
 
 @*/
+
+
 PetscErrorCode  PetscMallocValidate(int line,const char function[],const char file[])
 {
   TRSPACE      *head,*lasthead;
@@ -152,6 +154,7 @@ PetscErrorCode  PetscMallocValidate(int line,const char function[],const char fi
   PetscFunctionReturn(0);
 }
 
+
 /*
     PetscTrMallocDefault - Malloc with tracing.
 
@@ -175,9 +178,11 @@ PetscErrorCode  PetscTrMallocDefault(size_t a,int lineno,const char function[],c
   /* Do not try to handle empty blocks */
   if (!a) { *result = NULL; PetscFunctionReturn(0); }
 
+/*
   if (TRdebugLevel) {
     ierr = PetscMallocValidate(lineno,function,filename); if (ierr) PetscFunctionReturn(ierr);
   }
+*/
 
   nsize = (a + (PETSC_MEMALIGN-1)) & ~(PETSC_MEMALIGN-1);
   ierr  = PetscMallocAlign(nsize+sizeof(TrSPACE)+sizeof(PetscClassId),lineno,function,filename,(void**)&inew);CHKERRQ(ierr);
@@ -255,9 +260,11 @@ PetscErrorCode  PetscTrFreeDefault(void *aa,int line,const char function[],const
   /* Do not try to handle empty blocks */
   if (!a) PetscFunctionReturn(0);
 
+/*
   if (TRdebugLevel) {
     ierr = PetscMallocValidate(line,function,file);CHKERRQ(ierr);
   }
+*/
 
   ahead = a;
   a     = a - sizeof(TrSPACE);
@@ -345,8 +352,10 @@ PetscErrorCode PetscTrReallocDefault(size_t len, int lineno, const char function
     PetscFunctionReturn(0);
   }
 
+  /*
   if (TRdebugLevel) {ierr = PetscMallocValidate(lineno,function,filename); if (ierr) PetscFunctionReturn(ierr);}
-
+  */
+  
   ahead = a;
   a     = a - sizeof(TrSPACE);
   head  = (TRSPACE *) a;
