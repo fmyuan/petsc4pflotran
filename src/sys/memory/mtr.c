@@ -180,9 +180,11 @@ PetscErrorCode  PetscTrMallocDefault(size_t a,int lineno,const char function[],c
   /* Do not try to handle empty blocks */
   if (!a) { *result = NULL; PetscFunctionReturn(0); }
 
+/*
   if (TRdebugLevel) {
     ierr = PetscMallocValidate(lineno,function,filename); if (ierr) PetscFunctionReturn(ierr);
   }
+*/
 
   nsize = (a + (PETSC_MEMALIGN-1)) & ~(PETSC_MEMALIGN-1);
   ierr  = PetscMallocAlign(nsize+sizeof(TrSPACE)+sizeof(PetscClassId),lineno,function,filename,(void**)&inew);CHKERRQ(ierr);
@@ -263,9 +265,11 @@ PetscErrorCode  PetscTrFreeDefault(void *aa,int line,const char function[],const
   /* Do not try to handle empty blocks */
   if (!a) PetscFunctionReturn(0);
 
+/*
   if (TRdebugLevel) {
     ierr = PetscMallocValidate(line,function,file);CHKERRQ(ierr);
   }
+*/
 
   ahead = a;
   a     = a - sizeof(TrSPACE);
